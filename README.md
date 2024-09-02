@@ -174,5 +174,7 @@ This analysis of global weather patterns from 1929 to the present reveals severa
 * **Deeper Regional Analysis:** Dig even deeper into the data, examining weather patterns and trends at the state, county, or even city level. Spotting local anomolies or patterns as compared to a large scale, potentially discovering areas with concerning patterns.
 * **Investigate Underlying Causes:** Explore potential factors driving the observed trends, such as greenhouse gas emissions, deforestation, or natural climate cycles.
 * **Predict Future Trends:** Utilize advanced statistical modeling or machine learning techniques to forecast future weather patterns and their potential impacts.
+* **Dig Deeper into Rainfall:** Take a closer look at rainfall patterns, including droughts, unusual events, and how things differ from one region to another. Create visuals to highlight areas with strange or worrisome rainfall trends.
+* **Connect the Dots:** Bring together all the charts and graphs from the analysis to see if any patterns emerge. For instance, we might notice that a year with less rainfall also saw higher temperatures and more heatwaves.
 
 This project gives us a good look at what's happening with the weather around the world, showing us both worrying changes and areas where we need to do more research. By using the approaches outlined here and tackling the problems we've identified, future studies can build on this work and help us better understand our changing climate so we can find ways to deal with it.
