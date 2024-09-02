@@ -1,5 +1,3 @@
-import os
-import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.cm as cm
@@ -172,27 +170,9 @@ def plot_avg_yearly_temp_trend(df, label):
 
 def perform_temperature_analysis(cleaned_data, label):
     cache_dir = '../cache/temperature'
+    queries_file = '../sql/temperature_queries.sql'
 
-    with open('../sql/temperature_queries.sql', 'r') as f:
-        queries = [query.strip() for query in f.read().split(';') if query.strip()]
-
-    formatted_queries = [query.format(cleaned_data=cleaned_data) for query in queries if query.strip()]
-
-    dataframes = []
-    for i, query in enumerate(formatted_queries):
-        cache_file = os.path.join(cache_dir, f'df_1_{i+1}_{label}.csv')
-
-        if os.path.exists(cache_file):
-            print(f'Loading {cache_file} from cache...')
-            df = pd.read_csv(cache_file)
-        else:
-            print(f'Fetching data from BigQuery and saving to {cache_file}...')
-            df = utils.fetch_data_from_bigquery(query)
-            df.to_csv(cache_file, index=False)
-
-        dataframes.append(df)
-
-    df_1_1, df_1_2, df_1_3, df_1_4 = dataframes
+    df_1_1, df_1_2, df_1_3, df_1_4 = utils.load_data_and_cache(cache_dir, queries_file, cleaned_data, label)
 
     plot_temp_extremes_by_region(df_1_1, label)
 

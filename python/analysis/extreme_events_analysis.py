@@ -1,5 +1,3 @@
-import os
-import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -100,27 +98,9 @@ def visualize_extreme_event_shifts(df, data_label):
 
 def perform_extreme_events_analysis(cleaned_data, label):
     cache_dir = '../cache/extreme_events'
+    queries_file = '../sql/extreme_events_queries.sql'
 
-    with open('../sql/extreme_events_queries.sql', 'r') as f:
-        queries = [query.strip() for query in f.read().split(';') if query.strip()]
-
-    formatted_queries = [query.format(cleaned_data=cleaned_data) for query in queries if query.strip()]
-
-    dataframes = []
-    for i, query in enumerate(formatted_queries):
-        cache_file = os.path.join(cache_dir, f'df_3_{i+1}_{label}.csv')
-
-        if os.path.exists(cache_file):
-            print(f'Loading {cache_file} from cache...')
-            df = pd.read_csv(cache_file)
-        else:
-            print(f'Fetching data from BigQuery and saving to {cache_file}...')
-            df = utils.fetch_data_from_bigquery(query)
-            df.to_csv(cache_file, index=False)
-
-        dataframes.append(df)
-
-    df_3_1, df_3_2 = dataframes
+    df_3_1, df_3_2 = utils.load_data_and_cache(cache_dir, queries_file, cleaned_data, label)
 
     plot_event_trends(df_3_1, label)
     plot_event_trends_log_scale(df_3_1, label)
