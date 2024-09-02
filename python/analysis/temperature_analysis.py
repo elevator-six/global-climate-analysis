@@ -6,8 +6,6 @@ from scipy.stats import linregress
 
 from . import utils
 
-from statsmodels.tsa.holtwinters import SimpleExpSmoothing
-
 def plot_temp_extremes_by_region(df, label):
     df_sorted = df.sort_values('avg_temp', ascending=False)
 
