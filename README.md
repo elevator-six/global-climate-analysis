@@ -57,7 +57,7 @@ This study explores weather patterns and trends worldwide by utilizing the NOAA 
 ### Methods:
 
 * **SQL:** Data extraction, cleaning, transformation, and aggregation using BigQuery.
-* **Python:** Data analysis, visualization, and statistical modeling using `matplotlib`, `seaborn`, `pandas`, `scipy`, and `statsmodels`.
+* **Python:** Data analysis, visualization, and statistical modeling using `matplotlib`, `seaborn`, `pandas`, and `scipy`.
 
 ## Project Structure:
 
